@@ -2,9 +2,8 @@
 
 # Project :Tic Tac toe
 
-> This project is implementing my own version of Ruby’s enumerable methods
+> This project is implementing tic tac toe game
 
-![Screenshot from 2021-02-15](https://user-images.githubusercontent.com/60273425/108003036-ffb95880-6fb6-11eb-8a68-519eac9dd36d.PNG)
 
 ## Built With
 
