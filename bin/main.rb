@@ -39,7 +39,7 @@ while plays <= 9
   # Check for wining combinations
   # break if player wins
   break if plays == 9
-  
+
   plays += 1
 
   puts "Game play: #{plays}"
