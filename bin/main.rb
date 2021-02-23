@@ -2,8 +2,8 @@
 
 # !/usr/bin/env ruby
 
-require './lib/Player'
-require './lib/Board'
+require './lib/player'
+require './lib/board'
 
 puts
 puts '################  WELCOME TO TIC TAC TOE GAME   ####################'
