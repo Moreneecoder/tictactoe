@@ -56,10 +56,10 @@ loop do
   player1.play(position)
 
   # CHECK IF WINNING COMBO
-  abort("GAME OVER! #{player1.name.upcase} WINS GAME!") if board.is_winning_combo?(player1.token)
+  abort("GAME OVER! #{player1.name.upcase} WINS GAME!") if board.winning_combo?(player1.token)
 
   # CHECK IF STALEMATE
-  abort('TOUGH GAME! THERE WAS NO WINNER') if board.is_stalemate?
+  abort('TOUGH GAME! THERE WAS NO WINNER') if board.stalemate?
 
   # PLAYER 2 TAKES TURN
   puts
@@ -83,9 +83,9 @@ loop do
   player2.play(position)
 
   # CHECK IF WINNING COMBO
-  abort("GAME OVER! #{player2.name.upcase} WINS GAME!") if board.is_winning_combo?(player2.token)
+  abort("GAME OVER! #{player2.name.upcase} WINS GAME!") if board.winning_combo?(player2.token)
 
   # CHECK IF STALEMATE
-  abort('TOUGH GAME! THERE WAS NO WINNER') if board.is_stalemate?
+  abort('TOUGH GAME! THERE WAS NO WINNER') if board.stalemate?
 end
 # rubocop:enable Metrics/BlockLength
