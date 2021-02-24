@@ -33,7 +33,7 @@ How to play:
 - Type the name of the players
 - Each player shold select a position from the game board typing from 1 up to 9
 - When one of the players complete a vertical line or horizontal or diagonal wins and the game ends
-- When the board is full with the tokens of the players there is a tie and the game end
+- When the board is full with the tokens of the players there is a tie and the game ends
 
 ## Dependencies
 
