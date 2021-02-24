@@ -44,7 +44,7 @@ Tic-tac-toe (American English), noughts and crosses (Commonwealth English), or X
 * The game can finish with a winner or in a draw
 
 
-## Usage
+### Step-By-Step Guide
 
 At this point, you should have all the required facilities to effectively run the game. If not, refer back to the setup section of this documentation.
 
