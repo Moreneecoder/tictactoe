@@ -1,80 +1,96 @@
 #!/usr/bin/env ruby
+# rubocop:disable Metrics/BlockLength
 
-puts 'Welcome to tic tac toe game'
+require './lib/player'
+require './lib/board'
 
-# Collect player names
-puts 'Type Player 1 Name: '
-player1 = gets.chomp
-puts 'Type Player 2 Name: '
-player2 = gets.chomp
+puts
+puts '################  WELCOME TO TIC TAC TOE GAME   ####################'
 
-# Create players objects
-# player1_obj = Player.new(player1, "X" )
-# player2_obj = Player.new(player2, "O" )
+print 'ENTER PLAYER ONE NAME: '
+puts
 
-# GAME BEGINS
+player1_name = gets.chomp
 
-# Game board [1-9]
-# game_board = GameBoard.new()
+print 'ENTER PLAYER TWO NAME: '
+puts
 
-# DISPLAY INITIAL GAME BOARD
-# game_board.display()
-# inital game board
-#-----1-----|------2-----|-----3-----
-#-----4-----|------5-----|-----6-----
-#-----7-----|------8-----|-----9-----
+player2_name = gets.chomp
 
-in_progress = true
+puts
+puts "--------  #{player1_name.upcase} VS #{player2_name.upcase}     --------"
+puts
 
-while in_progress
+# CREATE BOARD OBJECT
+board = Board.new
 
+# CREATE PLAYER OBJECTS
+player1 = Player.new(player1_name, 'X', board)
+player2 = Player.new(player2_name, 'O', board)
+
+# DISPLAY INITIAL BOARD
+puts board.display
+
+loop do
+  # PLAYER 1 TAKES TURN
   puts
+  print "PICK A POSITION, #{player1.name.upcase}: "
+  position = gets.chomp.to_i
 
-  puts "Player 1 #{player1} Select position from  1 - 9"
-  position = gets.chomp
-
-  # CHECK FOR INVALID INPUT
-  invalid = true
-
-  puts 'You must enter between values 1 to 9' if invalid
+  # CHECK IF POSITION INPUT IS BETWEEN 1 TO 9
+  until (1..9).to_a.any?(position)
+    puts 'You can only choose between positions 1 to 9.'
+    print "PICK A POSITION, #{player1.name.upcase}: "
+    position = gets.chomp.to_i
+  end
 
   # CHECK IF POSITION IS TAKEN
-  position_valid = true
+  until board.position_not_used?(position)
+    puts 'Position already taken! Choose a different position.'
+    print "PICK A POSITION, #{player1.name.upcase}: "
+    position = gets.chomp.to_i
+  end
 
-  puts 'POSITION ALREADY TAKEN! SELECT AVAILABLE POSITION.' if position_valid
+  # PLAYER ONE MOVE UPDATES ON BOARD
+  puts "#{player1.name} played #{player1.token} to square #{position}"
+  player1.play(position)
 
-  # player1_obj.play(position)
+  puts board.display
 
-  # CHECK IF WINNING MOVE
-  winning_move = false
+  # CHECK IF WINNING COMBO
+  abort("GAME OVER! #{player1.name.upcase} WINS GAME!") if board.winning_combo?(player1.token)
 
-  puts 'GAME OVER! PLAYER 1 WINS!' if winning_move
+  # CHECK IF STALEMATE
+  abort('TOUGH GAME! THERE WAS NO WINNER') if board.stalemate?
 
-  # CHECK IF GAME IS A TIE
-  is_a_tie = false
-
-  puts 'TOUGH GAME! IT IS A DRAW' if is_a_tie
-
-  # board.display()
-  puts "Player 1 #{player1} selected this position #{position}"
-  puts '-----X-----|------2-----|-----3-----'
-  puts '-----4-----|------5-----|-----6-----'
-  puts '-----7-----|------8-----|-----9-----'
+  # PLAYER 2 TAKES TURN
   puts
-  puts
+  print "PICK A POSITION, #{player2.name.upcase}: "
+  position = gets.chomp.to_i
 
-  puts "Player 2 #{player2} Select position from  1 - 9"
-  position = gets.chomp
-  puts
-  puts "Player 2 #{player2} selected this position #{position}"
+  # CHECK IF POSITION INPUT IS BETWEEN 1 TO 9
+  until (1..9).to_a.any?(position)
+    puts 'You can only choose between positions 1 to 9.'
+    print "PICK A POSITION, #{player2_name.name.upcase}: "
+    position = gets.chomp.to_i
+  end
 
-  # player2_obj.play(position)
-  # board.display()
-  puts '-----X-----|------2-----|-----3-----'
-  puts '-----4-----|------O-----|-----6-----'
-  puts '-----7-----|------8-----|-----9-----'
+  # CHECK IF POSITION IS TAKEN
+  until board.position_not_used?(position)
+    puts 'Position already taken! Choose a different position.'
+    print "PICK A POSITION, #{player2.name.upcase}: "
+    position = gets.chomp.to_i
+  end
 
-  in_progress = false
-  break if in_progress == false
+  puts "#{player2.name} played #{player2.token} to square #{position}"
+  player2.play(position)
 
+  puts board.display
+
+  # CHECK IF WINNING COMBO
+  abort("GAME OVER! #{player2.name.upcase} WINS GAME!") if board.winning_combo?(player2.token)
+
+  # CHECK IF STALEMATE
+  abort('TOUGH GAME! THERE WAS NO WINNER') if board.stalemate?
 end
+# rubocop:enable Metrics/BlockLength
