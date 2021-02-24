@@ -1,8 +1,6 @@
 # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
 class Board
-  # attr_accessor :board_array
-
   def initialize
     @board_array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
@@ -28,17 +26,14 @@ class Board
   end
 
   def winning_combo?(user_token)
-    #   VERTICAL COMBO
     return true if combo(@board_array[0], @board_array[1], @board_array[2], user_token)
     return true if combo(@board_array[3], @board_array[4], @board_array[5], user_token)
     return true if combo(@board_array[6], @board_array[7], @board_array[8], user_token)
 
-    #   HORIZONTAL COMBO
     return true if combo(@board_array[0], @board_array[3], @board_array[6], user_token)
     return true if combo(@board_array[1], @board_array[4], @board_array[7], user_token)
     return true if combo(@board_array[2], @board_array[5], @board_array[8], user_token)
 
-    #   DIAGONAL COMBO
     return true if combo(@board_array[0], @board_array[4], @board_array[8], user_token)
     return true if combo(@board_array[2], @board_array[4], @board_array[6], user_token)
 
