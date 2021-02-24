@@ -29,7 +29,7 @@ player1 = Player.new(player1_name, 'X', board)
 player2 = Player.new(player2_name, 'O', board)
 
 # DISPLAY INITIAL BOARD
-board.display
+puts board.display
 
 loop do
   # PLAYER 1 TAKES TURN
@@ -52,7 +52,10 @@ loop do
   end
 
   # PLAYER ONE MOVE UPDATES ON BOARD
+  puts "#{player1.name} played #{player1.token} to square #{position}"
   player1.play(position)
+
+  puts board.display
 
   # CHECK IF WINNING COMBO
   abort("GAME OVER! #{player1.name.upcase} WINS GAME!") if board.winning_combo?(player1.token)
@@ -79,7 +82,10 @@ loop do
     position = gets.chomp.to_i
   end
 
+  puts "#{player2.name} played #{player2.token} to square #{position}"
   player2.play(position)
+
+  puts board.display
 
   # CHECK IF WINNING COMBO
   abort("GAME OVER! #{player2.name.upcase} WINS GAME!") if board.winning_combo?(player2.token)

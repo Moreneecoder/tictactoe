@@ -8,8 +8,6 @@ class Player
   end
 
   def play(position)
-    puts "#{@name.upcase} played #{@token} to square #{position}"
     @board.update_board(position, @token)
-    @board.display
   end
 end
