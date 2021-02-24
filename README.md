@@ -22,7 +22,29 @@ To get a local version running, follow the simple guidelines below:
 
 - Rubocop: This is a tool for checking code quality and ensuring they meet the requirements. Don’t worry about this if you’re not a developer. Microverse provides a wonderful setup guide for [rubocop here](https://github.com/microverseinc/linters-config/tree/master/ruby).
 
-### Usage/Game Instructions
+Game Instructions
+
+### About The Game
+
+Tic-tac-toe (American English), noughts and crosses (Commonwealth English), or Xs and Os/“X’y O’sies” (Ireland), is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a diagonal, horizontal, or vertical row is the winner. It is a solved game with a forced draw assuming best play from both players.
+
+### Game Instructions/Rules
+
+* The first player enters their name (only non-empty nick-names are allowed) and is assign the 'X' token.
+* The second player enters their name and is assigned the 'O' token
+* Both players take turns to pick a position for their move. First player goes first
+* Every space in the board is a "position", and they are numbered this way:
+
+| 1 	| 2 	| 3 	|
+|-	|-	|-	|
+| 4 	| 5 	| 6 	|
+| 7 	| 8 	| 9 	|
+
+* Taking this order into account, players will take turns to choose an available position in the board
+* The game can finish with a winner or in a draw
+
+
+## Usage
 
 At this point, you should have all the required facilities to effectively run the game. If not, refer back to the setup section of this documentation.
 
