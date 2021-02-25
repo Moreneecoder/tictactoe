@@ -8,14 +8,30 @@ puts
 puts '################  WELCOME TO TIC TAC TOE GAME   ####################'
 
 print 'ENTER PLAYER ONE NAME: '
-puts
 
 player1_name = gets.chomp
-
-print 'ENTER PLAYER TWO NAME: '
 puts
 
+while player1_name.strip.empty?
+  puts 'YOU MUST ENTER A USERNAME'
+
+  print 'ENTER PLAYER ONE NAME: '
+  player1_name = gets.chomp
+  puts
+end
+
+print 'ENTER PLAYER TWO NAME: '
+
 player2_name = gets.chomp
+puts
+
+while player2_name.strip.empty?
+  puts 'YOU MUST ENTER A USERNAME'
+
+  print 'ENTER PLAYER TWO NAME: '
+  player2_name = gets.chomp
+  puts
+end
 
 puts
 puts "--------  #{player1_name.upcase} VS #{player2_name.upcase}     --------"
