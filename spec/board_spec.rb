@@ -38,4 +38,36 @@ describe Board do
       expect(board.combo(board.board_array[0], board.board_array[1], board.board_array[2], 'X')).to be(true)
     end
   end
+
+  describe '#winning_combo' do
+    it 'returns true if token has three matches horizontally' do
+        board = Board.new
+        player = Player.new('Rashad', 'X', board)
+        player.play(3)
+        player.play(4)
+        player.play(5)
+  
+        expect(board.combo(board.board_array[2], board.board_array[3], board.board_array[4], 'X')).to be(true)
+    end
+
+    it 'returns true if token has three matches vertically' do
+        board = Board.new
+        player = Player.new('Rashad', 'O', board)
+        player.play(1)
+        player.play(4)
+        player.play(7)
+  
+        expect(board.combo(board.board_array[0], board.board_array[3], board.board_array[6], 'O')).to be(true)
+    end
+
+    it 'returns true if token has three matches diagonally' do
+        board = Board.new
+        player = Player.new('Rashad', 'O', board)
+        player.play(2)
+        player.play(4)
+        player.play(6)
+  
+        expect(board.combo(board.board_array[1], board.board_array[3], board.board_array[5], 'O')).to be(true)
+    end
+  end
 end
