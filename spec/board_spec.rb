@@ -17,13 +17,25 @@ describe Board do
   end
 
   describe '#position_not_used?' do
-    it 'checks if position is already taken' do
+    it 'returns false if position is already taken' do
       board = Board.new
 
       player = Player.new('Rashad', 'O', board)
       player.play(5)
 
       expect(board.position_not_used?(5)).to be(false)
+    end
+  end
+
+  describe '#combo' do
+    it 'returns true if all three supplied positions matches token' do
+      board = Board.new
+      player = Player.new('Rashad', 'X', board)
+      player.play(1)
+      player.play(2)
+      player.play(3)
+
+      expect(board.combo(board.board_array[0], board.board_array[1], board.board_array[2], 'X')).to be(true)
     end
   end
 end
