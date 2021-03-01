@@ -1,7 +1,6 @@
 # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
 class Board
-
   attr_reader :board_array
 
   def initialize

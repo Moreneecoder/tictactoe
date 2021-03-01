@@ -6,7 +6,7 @@ describe Player do
     it 'sets chosen position to player token' do
       board = Board.new
       player = Player.new('Rashad', 'O', board)
-      expect(player.play(2)).to eql('O')   
+      expect(player.play(2)).to eql('O')
     end
   end
 end
