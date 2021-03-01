@@ -70,4 +70,15 @@ describe Board do
         expect(board.combo(board.board_array[1], board.board_array[3], board.board_array[5], 'O')).to be(true)
     end
   end
+
+  describe '#stalemate?' do
+    it 'returns true if all elements in board array is a string' do
+        board = Board.new
+        player = Player.new('Rashad', 'O', board)
+        
+        9.times {|index| player.play(index + 1)}
+        expect(board.stalemate?).to be(true)
+
+    end
+  end
 end
