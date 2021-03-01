@@ -1,5 +1,5 @@
-require './lib/player.rb'
-require './lib/board.rb'
+require './lib/player'
+require './lib/board'
 
 describe Player do
   describe '#play' do

@@ -1,5 +1,5 @@
-require './lib/board.rb'
-require './lib/player.rb'
+require './lib/board'
+require './lib/player'
 
 describe Board do
   context '#display' do
@@ -32,9 +32,7 @@ describe Board do
     it 'returns true if all three supplied positions matches token' do
       board = Board.new
       player = Player.new('Rashad', 'X', board)
-      player.play(1)
-      player.play(2)
-      player.play(3)
+      3.times { |index| player.play(index + 1) }
 
       expect(board.combo(board.board_array[0], board.board_array[1], board.board_array[2], 'X')).to be(true)
     end
@@ -44,19 +42,17 @@ describe Board do
     it 'returns true if token has three matches horizontally' do
       board = Board.new
       player = Player.new('Rashad', 'X', board)
-      player.play(3)
-      player.play(4)
-      player.play(5)
+      3.times { |index| player.play(index + 1) }
 
-      expect(board.combo(board.board_array[2], board.board_array[3], board.board_array[4], 'X')).to be(true)
+      expect(board.combo(board.board_array[0], board.board_array[1], board.board_array[2], 'X')).to be(true)
     end
 
     it 'returns true if token has three matches vertically' do
       board = Board.new
       player = Player.new('Rashad', 'O', board)
-      player.play(1)
-      player.play(4)
-      player.play(7)
+      position = [1, 4, 7]
+      position.each { |val| player.play(val) }
+      3.times { |index| player.play(index + 3) }
 
       expect(board.combo(board.board_array[0], board.board_array[3], board.board_array[6], 'O')).to be(true)
     end
@@ -64,9 +60,9 @@ describe Board do
     it 'returns true if token has three matches diagonally' do
       board = Board.new
       player = Player.new('Rashad', 'O', board)
-      player.play(2)
-      player.play(4)
-      player.play(6)
+      position = [2, 4, 6]
+      position.each { |val| player.play(val) }
+      3.times { |index| player.play(index + 2) }
 
       expect(board.combo(board.board_array[1], board.board_array[3], board.board_array[5], 'O')).to be(true)
     end
