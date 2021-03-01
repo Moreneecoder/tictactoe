@@ -26,6 +26,15 @@ describe Board do
 
       expect(board.position_not_used?(5)).to be(false)
     end
+
+    it 'returns true if position is not taken' do
+      board = Board.new
+
+      player = Player.new('Rashad', 'O', board)
+      player.play(7)
+
+      expect(board.position_not_used?(5)).to_not be(false)
+    end
   end
 
   describe '#combo' do
@@ -35,6 +44,14 @@ describe Board do
       3.times { |index| player.play(index + 1) }
 
       expect(board.combo(board.board_array[0], board.board_array[1], board.board_array[2], 'X')).to be(true)
+    end
+
+    it 'returns false if all three supplied positions does not matches token' do
+      board = Board.new
+      player = Player.new('Rashad', 'X', board)
+      3.times { |index| player.play(index + 1) }
+
+      expect(board.combo(board.board_array[3], board.board_array[1], board.board_array[2], 'X')).to_not be(true)
     end
   end
 
@@ -47,14 +64,30 @@ describe Board do
       expect(board.combo(board.board_array[0], board.board_array[1], board.board_array[2], 'X')).to be(true)
     end
 
+    it 'returns false if token does not  have three matches horizontally' do
+      board = Board.new
+      player = Player.new('Rashad', 'X', board)
+      3.times { |index| player.play(index + 1) }
+
+      expect(board.combo(board.board_array[0], board.board_array[4], board.board_array[2], 'X')).to_not be(true)
+    end
+
     it 'returns true if token has three matches vertically' do
       board = Board.new
       player = Player.new('Rashad', 'O', board)
       position = [1, 4, 7]
       position.each { |val| player.play(val) }
-      3.times { |index| player.play(index + 3) }
 
       expect(board.combo(board.board_array[0], board.board_array[3], board.board_array[6], 'O')).to be(true)
+    end
+
+    it 'returns true if token does not have three matches vertically' do
+      board = Board.new
+      player = Player.new('Rashad', 'O', board)
+      position = [1, 4, 7]
+      position.each { |val| player.play(val) }
+
+      expect(board.combo(board.board_array[0], board.board_array[3], board.board_array[4], 'O')).to_not be(true)
     end
 
     it 'returns true if token has three matches diagonally' do
@@ -66,6 +99,15 @@ describe Board do
 
       expect(board.combo(board.board_array[1], board.board_array[3], board.board_array[5], 'O')).to be(true)
     end
+
+    it 'returns false if token does not have three matches diagonally' do
+      board = Board.new
+      player = Player.new('Rashad', 'O', board)
+      position = [2, 4, 6]
+      position.each { |val| player.play(val) }
+
+      expect(board.combo(board.board_array[1], board.board_array[4], board.board_array[5], 'O')).to_not be(true)
+    end
   end
 
   describe '#stalemate?' do
@@ -75,6 +117,14 @@ describe Board do
 
       9.times { |index| player.play(index + 1) }
       expect(board.stalemate?).to be(true)
+    end
+
+    it 'returns false if all elements in board array is not a string' do
+      board = Board.new
+      player = Player.new('Rashad', 'O', board)
+
+      8.times { |index| player.play(index + 1) }
+      expect(board.stalemate?).to_not be(true)
     end
   end
 end
