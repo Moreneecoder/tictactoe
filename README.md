@@ -88,6 +88,11 @@ To get the game running, follow the instructions below:
 
 - GitHub: [@EroAuditore](https://github.com/EroAuditore)
 
+👤 **Rashad Muntar**
+
+- GitHub: [@Rashad-Muntar](https://github.com/Rashad-Muntar)
+- Twitter: [@RashadToure](https://twitter.com/twitterhandle)
+
 👤 ** Morenikeji Fuad Bello**
 
 - GitHub: [@Moreneecoder](https://github.com/Moreneecoder)
